@@ -64,8 +64,10 @@ jobs:
       - name: Copy Testing Environment File
         run: cp .env.testing.example .env.testing
 
-      - name: Generate Application Key
-        run: php artisan key:generate
+      - name: Generate Application Keys
+        run: |
+          php artisan key:generate --force
+          php artisan key:generate --env=testing --force
 
       - name: Run Testing Migrations
         env:

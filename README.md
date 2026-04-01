@@ -42,6 +42,9 @@ Frontend (React) includes:
 - Tailwind CSS 4
 - MySQL
 - PHPUnit
+- Laravel Sail
+- Docker
+- Makefile
 
 ## Quick Start
 

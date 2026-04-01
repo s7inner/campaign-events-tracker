@@ -51,18 +51,25 @@ Add to hosts file:
 127.0.0.1 campaign-events-tracker.test
 ```
 
-Run commands in order:
+Run via Makefile (WSL / Linux / macOS):
 
 ```bash
-composer install
-npm install
-
-cp .env.example .env
-cp .env.testing.example .env.testing
-php artisan key:generate
-
-php artisan migrate:fresh --seed
-composer dev
+make setup
 ```
 
-http://campaign-events-tracker.test/
+Application URL:
+
+`http://campaign-events-tracker.test/`
+
+Manual Sail setup (if needed):
+
+```bash
+cp .env.example .env
+cp .env.testing.example .env.testing
+composer install
+chmod +x vendor/bin/sail vendor/laravel/sail/bin/sail
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan key:generate --force
+./vendor/bin/sail artisan migrate --seed --force
+./vendor/bin/sail artisan migrate --env=testing --force
+```
